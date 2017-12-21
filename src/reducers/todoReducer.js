@@ -13,6 +13,10 @@ const todoData = (state = initState, action) => {
           completed: false
         }
       ];
+    case 'TOGGLE_TODO':
+      return state.map(todoItem =>
+        (todoItem.id === action.id) ? { ...todoItem, completed: !todoItem.completed } : todoItem
+      )
     default:
       return state;
   }

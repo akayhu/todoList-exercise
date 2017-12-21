@@ -7,7 +7,7 @@ export function addTodo(text) {
     id: nextId++,
     text
   };
-}
+};
 
 // const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
 // export function setVisibilityFilter(filter) {
@@ -17,10 +17,10 @@ export function addTodo(text) {
 //   };
 // }
 
-// const TOGGLE_TODO = 'TOGGLE_TODO';
-// export function toggleTodo(id) {
-//   return {
-//     type: TOGGLE_TODO,
-//     id
-//   };
-// }
+const TOGGLE_TODO = 'TOGGLE_TODO';
+export function toggleTodo(id) {
+  return {
+    type: TOGGLE_TODO,
+    id
+  };
+};
