@@ -2,8 +2,7 @@ const initState = {
 	state: []
 };
 
-const todoReducer = (state = initState, action) => {
-  console.log('action', action);
+const todoData = (state = initState, action) => {
   switch (action.type) {
     case 'ADD_TODO':
       return [
@@ -19,4 +18,4 @@ const todoReducer = (state = initState, action) => {
   }
 }
 
-export default todoReducer;
+export default todoData;
