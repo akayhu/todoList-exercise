@@ -15,11 +15,19 @@ class TodoListItem extends Component {
     const { id, text, completed } = this.props.data;
     return (
       <li
-        style={{ textDecoration: completed ? 'line-through' : 'none' } }
+        style={ { textDecoration: completed ? 'line-through' : 'none' } }
       >
-        <input type="checkbox" defaultChecked={ completed } onClick={ this.lineThrough.bind(this, id) } />
+        <input 
+          type="checkbox"
+          defaultChecked={ completed }
+          onClick={ this.lineThrough.bind(this, id) }
+        />
         { text }
-        <button onClick={ this.deltetItem.bind(this, id) }>刪除</button>
+        <button
+          onClick={ this.deltetItem.bind(this, id) }
+        >
+          刪除
+        </button>
       </li>
     );
   }
