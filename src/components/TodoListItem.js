@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import { toggleTodo, deltetTodo } from '../actions';
 
 class TodoListItem extends Component {
+  constructor(props) {
+    super(props);
+    this.lineThrough = this.lineThrough.bind(this);
+  }
   lineThrough(id) {
     const { toggleTodo } = this.props;
     toggleTodo(id);
@@ -20,7 +24,7 @@ class TodoListItem extends Component {
         <input 
           type="checkbox"
           checked={ completed }
-          onClick={ this.lineThrough.bind(this, id) }
+          onClick={ () => { this.lineThrough(id) }
         />
         { text }
         <button
