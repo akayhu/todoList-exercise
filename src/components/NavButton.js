@@ -3,10 +3,6 @@ import { connect } from 'react-redux';
 import { viewFilter } from '../actions';
 
 class NavButton extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.chanckFilter = this.chanckFilter.bind(this);
-  // }
   chanckFilter(type) {
     const { viewFilter } = this.props;
     viewFilter(type);

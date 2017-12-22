@@ -14,17 +14,6 @@ class TodoList extends Component {
     return (
       <ul style={ ulStyle }>
         {
-          // todoList.length > 0 &&
-          // todoList.map((items, index) => (
-          //   <TodoListItem
-          //     key={ index }
-          //     data={ items }
-          //   />
-          // ))
-          // <TodoListItem
-          //   key={ index }
-          //   data={ items }
-          // />
           todoList.length > 0 &&
           todoList.map((items, index) => {
             switch (showFilter) {

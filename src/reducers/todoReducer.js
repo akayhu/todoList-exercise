@@ -18,12 +18,6 @@ const todoData = (state = initState, action) => {
         (todoItem.id === action.id) ? { ...todoItem, completed: !todoItem.completed } : todoItem
       );
     case 'DELETE_TODO':
-      // state.map((todoItem, index) => {
-      //   if(todoItem.id === action.id) {
-      //     state.splice(index, 1);
-      //   }
-      // });
-      // return state;
       return state.filter(todoItem => (!(todoItem.id === action.id)));
     default:
       return state;
