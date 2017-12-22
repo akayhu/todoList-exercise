@@ -11,13 +11,13 @@ export function addTodo(text) {
 };
 
 // 過濾
-// const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
-// export function setVisibilityFilter(filter) {
-//   return {
-//     type: SET_VISIBILITY_FILTER,
-//     filter
-//   };
-// }
+const VIEW_FILTER = 'VIEW_FILTER';
+export function viewFilter(filter) {
+  return {
+    type: VIEW_FILTER,
+    filter
+  };
+}
 
 // 畫線
 const TOGGLE_TODO = 'TOGGLE_TODO';

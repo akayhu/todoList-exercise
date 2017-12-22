@@ -25,6 +25,8 @@ const todoData = (state = initState, action) => {
       // });
       // return state;
       return state.filter(todoItem => (!(todoItem.id === action.id)));
+    case 'VIEW_FILTER':
+      return state;
     default:
       return state;
   }
