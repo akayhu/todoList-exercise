@@ -19,7 +19,7 @@ class TodoListItem extends Component {
       >
         <input 
           type="checkbox"
-          defaultChecked={ completed }
+          checked={ completed }
           onClick={ this.lineThrough.bind(this, id) }
         />
         { text }
