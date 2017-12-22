@@ -10,17 +10,43 @@ const ulStyle = {
 
 class TodoList extends Component {
   render() {
-    const { todoList } = this.props;
+    const { todoList, showFilter } = this.props;
     return (
       <ul style={ ulStyle }>
         {
+          // todoList.length > 0 &&
+          // todoList.map((items, index) => (
+          //   <TodoListItem
+          //     key={ index }
+          //     data={ items }
+          //   />
+          // ))
+          // <TodoListItem
+          //   key={ index }
+          //   data={ items }
+          // />
           todoList.length > 0 &&
-          todoList.map((items, index) => (
-            <TodoListItem
-              key={ index }
-              data={ items }
-            />
-          ))
+          todoList.map((items, index) => {
+            switch (showFilter) {
+              case 'completed':
+                return items.completed &&
+                  <TodoListItem
+                    key={ index }
+                    data={ items }
+                  />
+              case 'unCompleted':
+                return !items.completed &&
+                  <TodoListItem
+                    key={ index }
+                    data={ items }
+                  />
+              default:
+                return <TodoListItem
+                  key={ index }
+                  data={ items }
+                />
+            }
+          })
         }
       </ul>
     );
@@ -29,7 +55,8 @@ class TodoList extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    todoList: state.todoData
+    todoList: state.todoData,
+    showFilter: state.viewFilter
   }
 };
 

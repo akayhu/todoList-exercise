@@ -17,7 +17,7 @@ export function viewFilter(filter) {
     type: VIEW_FILTER,
     filter
   };
-}
+};
 
 // 畫線
 const TOGGLE_TODO = 'TOGGLE_TODO';
