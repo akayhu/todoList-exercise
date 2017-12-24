@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 import TodoListItem from './TodoListItem';
 
-const ulStyle = {
-  'margin': 0,
-  'padding': 0,
-  'listStyleType': 'none'
-};
+const Ul = styled.ul`
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+`;
 
 class TodoList extends Component {
   render() {
     const { todoList, showFilter } = this.props;
     return (
-      <ul style={ ulStyle }>
+      <Ul>
         {
           todoList.length > 0 &&
           todoList.map((items, index) => {
@@ -37,7 +38,7 @@ class TodoList extends Component {
             }
           })
         }
-      </ul>
+      </Ul>
     );
   }
 }
