@@ -5,6 +5,10 @@ import { toggleTodo, deltetTodo } from '../actions';
 
 const Li = styled.li`
   margin-bottom: 5px;
+
+  &:hover {
+    color: blue;
+  }
 `;
 
 const Input = styled.input`
@@ -19,7 +23,7 @@ const Button = styled.button`
   color: #fff;
   border: 1px solid red;
   cursor: pointer;
-`
+`;
 
 class TodoListItem extends Component {
   constructor(props) {
