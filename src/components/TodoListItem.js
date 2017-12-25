@@ -49,6 +49,7 @@ class TodoListItem extends Component {
           type="checkbox"
           checked={ completed }
           onClick={ () => { this.lineThrough(id) } }
+          readOnly
         />
         { text }
         <Button

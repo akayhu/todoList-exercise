@@ -37,14 +37,14 @@ class CreateTodo extends Component {
   }
   render() {
     return (
-      <div>
+      <form onSubmit={ this.addTodoList }>
         <input
           style={ inputStyle }
           type="text"
           ref="todoListInput"
         />
-        <Button type="submit" onClick={ this.addTodoList }>新增</Button>
-      </div>
+        <Button type="submit">新增</Button>
+      </form>
     );
   }
 }
