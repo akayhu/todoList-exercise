@@ -1,41 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import styled, { css } from 'styled-components/';
 import { viewFilter } from '../actions';
-
-const NavDiv = styled.div`
-  margin: 15px 0;
-`;
-
-const Button = styled.button`
-  border-radius: 3px;
-  padding: 5px 10px;
-  margin: 0 1em;
-  background: transparent;
-  color: #000;
-  border: 1px solid #d0d0d0;
-  cursor: pointer;
-
-  ${props => props.all && css`
-    margin-left: 0;
-  `}
-
-  ${props => props.completed && css`
-    background: #34ABCA;
-    color: #fff;
-    border: 1px solid #34ABCA;
-  `}
-
-  ${props => props.unCompleted && css`
-    background: red;
-    color: #fff;
-    border: 1px solid red;
-  `}
-`;
-
-const Hr = styled.hr`
-  margin: 14px 0;
-`;
+import { NavDiv, Button, Hr } from './styled';
 
 class NavButton extends Component {
   constructor(props) {

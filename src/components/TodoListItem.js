@@ -1,29 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import styled from 'styled-components/';
 import { toggleTodo, deltetTodo } from '../actions';
-
-const Li = styled.li`
-  margin-bottom: 5px;
-
-  &:hover {
-    color: blue;
-  }
-`;
-
-const Input = styled.input`
-  margin-right: 6px;
-`;
-
-const Button = styled.button`
-  border-radius: 3px;
-  padding: 5px 10px;
-  margin-left: 6px;
-  background: red;
-  color: #fff;
-  border: 1px solid red;
-  cursor: pointer;
-`;
+import { Li, Input, DelButton } from './styled';
 
 class TodoListItem extends Component {
   constructor(props) {
@@ -52,11 +30,11 @@ class TodoListItem extends Component {
           readOnly
         />
         { text }
-        <Button
+        <DelButton
           onClick={ () => { this.deltetItem(id) } }
         >
           刪除
-        </Button>
+        </DelButton>
       </Li>
     );
   }

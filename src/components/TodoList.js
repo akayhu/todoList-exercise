@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
 import TodoListItem from './TodoListItem';
-
-const Ul = styled.ul`
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-`;
+import { Ul } from './styled';
 
 class TodoList extends Component {
   render() {

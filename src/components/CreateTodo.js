@@ -1,17 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
 import { addTodo } from '../actions';
-
-const Button = styled.button`
-  border-radius: 3px;
-  padding: 5px 10px;
-  margin-left: 10px;
-  background: transparent;
-  color: #000;
-  border: 1px solid #d0d0d0;
-  cursor: pointer;
-`;
+import { CreateButton } from './styled';
 
 const inputStyle = {
   'borderRadius': '3px',
@@ -43,7 +33,7 @@ class CreateTodo extends Component {
           type="text"
           ref="todoListInput"
         />
-        <Button type="submit">新增</Button>
+        <CreateButton type="submit">新增</CreateButton>
       </form>
     );
   }
