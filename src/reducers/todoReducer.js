@@ -1,8 +1,4 @@
-const initState = {
-  state: []
-};
-
-const todoData = (state = initState, action) => {
+const todoData = (state = [], action) => {
   switch (action.type) {
     case 'ADD_TODO':
       return [
