@@ -15,6 +15,17 @@ const todoData = (state = [], action) => {
       );
     case 'DELETE_TODO':
       return state.filter(todoItem => (!(todoItem.id === action.id)));
+    case 'EDIT_TODO':
+      return state.map(todoItem => {
+        if(todoItem.id === action.id) {
+          return {
+            ...todoItem,
+            text: action.text,
+          };
+        } else {
+          return todoItem;
+        } 
+      });
     default:
       return state;
   }

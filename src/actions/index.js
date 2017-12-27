@@ -1,7 +1,7 @@
 let nextId = 0;
 
 // 新增
-const ADD_TODO = 'ADD_TODO';
+export const ADD_TODO = 'ADD_TODO';
 export function addTodo(text) {
   return {
     type: ADD_TODO,
@@ -11,7 +11,7 @@ export function addTodo(text) {
 };
 
 // 過濾
-const VIEW_FILTER = 'VIEW_FILTER';
+export const VIEW_FILTER = 'VIEW_FILTER';
 export function viewFilter(filter) {
   return {
     type: VIEW_FILTER,
@@ -20,7 +20,7 @@ export function viewFilter(filter) {
 };
 
 // 畫線
-const TOGGLE_TODO = 'TOGGLE_TODO';
+export const TOGGLE_TODO = 'TOGGLE_TODO';
 export function toggleTodo(id) {
   return {
     type: TOGGLE_TODO,
@@ -29,10 +29,20 @@ export function toggleTodo(id) {
 };
 
 // 刪除
-const DELETE_TODO = 'DELETE_TODO';
+export const DELETE_TODO = 'DELETE_TODO';
 export function deltetTodo(id) {
   return {
     type: DELETE_TODO,
     id
+  };
+};
+
+// 編修
+export const EDIT_TODO = 'EDIT_TODO';
+export function editTodo(id, text) {
+  return {
+    type: EDIT_TODO,
+    id,
+    text
   };
 };
