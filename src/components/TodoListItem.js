@@ -1,16 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { toggleTodo, deltetTodo, editTodo } from '../actions';
-import { Li, Input, Button, DelButton } from './styled';
-
-const inputStyle = {
-  'borderRadius': '3px',
-  'padding': '6px 3px',
-  'background': 'transparent',
-  'color': '#000',
-  'border': '1px solid #d0d0d0',
-  'cursor': 'pointer'
-};
+import { Li, Input, Button, DelButton, EditInput } from './styled';
 
 class TodoListItem extends Component {
   constructor(props) {
@@ -59,16 +50,15 @@ class TodoListItem extends Component {
           readOnly
         />
         {
-          edit === false && 
+          !edit && 
           <span onClick={ this.editItemView }>{ text }</span>
         }
         {
-          edit === true &&
+          edit &&
           <span>
-            <input
+            <EditInput
               type="text"
               defaultValue={ text }
-              style={ inputStyle }
               onChange={ this.editItem }
               autoFocus
             />

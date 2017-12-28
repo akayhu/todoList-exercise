@@ -71,3 +71,12 @@ export const Button = styled.button`
 export const Hr = styled.hr`
   margin: 14px 0;
 `;
+
+export const EditInput = styled.input`
+  border-radius: 3px;
+  padding: 6px 3px;
+  background: transparent;
+  color: #000;
+  border: 1px solid #d0d0d0;
+  cursor: pointer;
+`;
