@@ -4,34 +4,28 @@ import TodoListItem from './TodoListItem';
 import { Ul } from './styled';
 
 class TodoList extends Component {
+  renderList(todoList, showFilter) {
+    if(todoList.length === 0) return null;
+
+    const renderList = todoList.filter((items, index) => {
+      // return showFilter === 'all' ? true : items.completed === showFilter;
+      if (showFilter === 'completed' && items.completed) {
+        return true;
+      } else if (showFilter === 'unCompleted' && !items.completed) {
+        return true;
+      } else if (showFilter === 'all'){
+        return true;
+      }
+      return false;
+    });
+
+    return renderList.map((items, index) => <TodoListItem key={ index } data={ items } />);
+  }
   render() {
     const { todoList, showFilter } = this.props;
     return (
       <Ul>
-        {
-          todoList.length > 0 &&
-          todoList.map((items, index) => {
-            switch (showFilter) {
-              case 'completed':
-                return items.completed &&
-                  <TodoListItem
-                    key={ index }
-                    data={ items }
-                  />
-              case 'unCompleted':
-                return !items.completed &&
-                  <TodoListItem
-                    key={ index }
-                    data={ items }
-                  />
-              default:
-                return <TodoListItem
-                  key={ index }
-                  data={ items }
-                />
-            }
-          })
-        }
+        { this.renderList(todoList, showFilter) }
       </Ul>
     );
   }
