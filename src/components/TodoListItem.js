@@ -12,7 +12,7 @@ class TodoListItem extends Component {
     this.editItemView = this.editItemView.bind(this);
     this.editItemEnd = this.editItemEnd.bind(this);
     this.state = {
-      value: '',
+      value: this.props.data.text,
       edit: false
     };
   }
@@ -36,40 +36,35 @@ class TodoListItem extends Component {
   editItemView() {
     this.setState({ edit: true });
   }
+  renderEdit(edit, id, text) {
+    if(edit) {
+      return (
+        <span>
+          <EditInput
+            type="text"
+            value={ text }
+            onChange={ this.editItem }
+          />
+          <Button onClick={ () => { this.editItemEnd(id) } }>完成編輯</Button>
+        </span>
+      )
+    } else {
+      return (<span onClick={ this.editItemView }>{ text }</span>)
+    }
+  }
   render() {
-    const { edit } = this.state;
-    const { id, text, completed } = this.props.data;
+    const { edit, value } = this.state;
+    const { id, completed } = this.props.data;
     return (
-      <Li
-        style={ { textDecoration: completed ? 'line-through' : 'none' } }
-      >
+      <Li style={ { textDecoration: completed ? 'line-through' : 'none' } }>
         <Input 
           type="checkbox"
           checked={ completed }
           onChange={ () => { this.lineThrough(id) } }
           readOnly
         />
-        {
-          !edit && 
-          <span onClick={ this.editItemView }>{ text }</span>
-        }
-        {
-          edit &&
-          <span>
-            <EditInput
-              type="text"
-              defaultValue={ text }
-              onChange={ this.editItem }
-              autoFocus
-            />
-            <Button onClick={ () => { this.editItemEnd(id) } }>完成編輯</Button>
-          </span>
-        }
-        <DelButton
-          onClick={ () => { this.deltetItem(id) } }
-        >
-          刪除
-        </DelButton>
+        { this.renderEdit(edit, id, value) }
+        <DelButton onClick={ () => { this.deltetItem(id) } }>刪除</DelButton>
       </Li>
     );
   }
