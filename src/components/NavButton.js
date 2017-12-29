@@ -9,15 +9,14 @@ class NavButton extends Component {
     this.chanckFilter = this.chanckFilter.bind(this);
   }
   chanckFilter(type) {
-    const { viewFilter } = this.props;
-    viewFilter(type);
+    this.props.viewFilter(type);
   }
   render() {
     return (
       <NavDiv>
         <Button all onClick={ () => { this.chanckFilter('all') } }>全顯示</Button>
-        <Button completed onClick={ () => { this.chanckFilter('completed') } }>顯示完成</Button>
-        <Button unCompleted onClick={ () => { this.chanckFilter('unCompleted') } }>顯示未完成</Button>
+        <Button completed onClick={ () => { this.chanckFilter('completed') } }>顯示勾選</Button>
+        <Button unCompleted onClick={ () => { this.chanckFilter('unCompleted') } }>顯示未勾選</Button>
         <Hr />
       </NavDiv>
     )

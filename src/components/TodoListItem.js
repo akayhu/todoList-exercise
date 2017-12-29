@@ -17,12 +17,10 @@ class TodoListItem extends Component {
     };
   }
   lineThrough(id) {
-    const { toggleTodo } = this.props;
-    toggleTodo(id);
+    this.props.toggleTodo(id);
   }
   deltetItem(id) {
-    const { deltetTodo } = this.props;
-    deltetTodo(id);
+    this.props.deltetTodo(id);
   }
   editItem(event) {
     this.setState({ value: event.target.value });

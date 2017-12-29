@@ -5,9 +5,8 @@ import { Ul } from './styled';
 
 class TodoList extends Component {
   renderList(todoList, showFilter) {
-    if(todoList.length === 0) return null;
-
-    const renderList = todoList.filter((items, index) => {
+    if (todoList.length === 0) return null;
+    const renderListData = todoList.filter((items, index) => {
       // return showFilter === 'all' ? true : items.completed === showFilter;
       if (showFilter === 'completed' && items.completed) {
         return true;
@@ -18,8 +17,7 @@ class TodoList extends Component {
       }
       return false;
     });
-
-    return renderList.map((items, index) => <TodoListItem key={ index } data={ items } />);
+    return renderListData.map((items) => <TodoListItem key={ items.id } data={ items } />);
   }
   render() {
     const { todoList, showFilter } = this.props;
