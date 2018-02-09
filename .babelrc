@@ -1,3 +1,11 @@
 {
-  "presets": ["react", "es2015"]
+  "presets": [
+    "react",
+    "es2015",
+    "stage-2"
+  ]
 }
+
+// ES2015 將 ES2015編譯為 ES5。
+// 將 JSX 語法轉換為 createElement 調用。
+// stage-2 允許我們使用 ES7 特性，如裝飾器和異步/等待。
