@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addTodo } from '../actions';
 import { CreateButton } from './styled';
@@ -38,6 +39,10 @@ class CreateTodo extends Component {
     );
   }
 }
+
+CreateTodo.propTypes = {
+  addTodo: PropTypes.func
+};
 
 const action = { addTodo };
 

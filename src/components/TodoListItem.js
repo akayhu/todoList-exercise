@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { toggleTodo, deltetTodo, editTodo } from '../actions';
 import { Li, Input, Button, DelButton, EditInput } from './styled';
@@ -67,6 +68,14 @@ class TodoListItem extends Component {
     );
   }
 }
+
+TodoListItem.propTypes = {
+  id: PropTypes.number,
+  completed: PropTypes.bool,
+  toggleTodo: PropTypes.func,
+  deltetTodo: PropTypes.func,
+  editTodo: PropTypes.func
+};
 
 const action = { toggleTodo, deltetTodo, editTodo };
 

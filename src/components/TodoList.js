@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import TodoListItem from './TodoListItem';
 import { Ul } from './styled';
@@ -28,6 +29,11 @@ class TodoList extends Component {
     );
   }
 }
+
+TodoList.propTypes = {
+  todoList: PropTypes.array,
+  showFilter: PropTypes.string
+};
 
 const mapStateToProps = (state) => {
   return {
