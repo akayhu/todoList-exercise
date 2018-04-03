@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { viewFilter } from '../actions';
 import { NavDiv, Button, Hr } from './styled';
@@ -22,6 +23,10 @@ class NavButton extends Component {
     )
   }
 }
+
+NavButton.propTypes = {
+  viewFilter: PropTypes.func
+};
 
 const action = { viewFilter };
 
