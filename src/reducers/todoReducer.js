@@ -6,12 +6,14 @@ const todoData = (state = [], action) => {
         {
           id: action.id,
           text: action.text,
-          completed: false
+          completed: 'unCompleted'
         }
       ];
     case 'TOGGLE_TODO':
       return state.map(todoItem =>
-        (todoItem.id === action.id) ? { ...todoItem, completed: !todoItem.completed } : todoItem
+        (todoItem.id === action.id) ?
+        { ...todoItem, completed: (todoItem.completed === 'unCompleted') ? 'completed' : 'unCompleted' } :
+        todoItem
       );
     case 'DELETE_TODO':
       return state.filter(todoItem => (!(todoItem.id === action.id)));

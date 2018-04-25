@@ -6,17 +6,9 @@ class TodoList extends Component {
   renderList() {
     const { listData, showFilter, toggleTodoFunc, deltetTodoFunc, editTodoFunc } = this.props;
     if (listData.length === 0) return null;
-    const renderListData = listData.filter((items, index) => {
-      // return showFilter === 'all' ? true : items.completed === showFilter;
-      if (showFilter === 'completed' && items.completed) {
-        return true;
-      } else if (showFilter === 'unCompleted' && !items.completed) {
-        return true;
-      } else if (showFilter === 'all'){
-        return true;
-      }
-      return false;
-    });
+    const renderListData = listData.filter((items, index) =>
+      showFilter === 'all' ? true : items.completed === showFilter
+    );
     return (
       renderListData.map((items) =>
         <TodoListItem

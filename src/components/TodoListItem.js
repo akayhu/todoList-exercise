@@ -52,10 +52,10 @@ class TodoListItem extends Component {
     const { edit, value } = this.state;
     const { id, completed } = this.props.data;
     return (
-      <Li style={ { textDecoration: completed ? 'line-through' : 'none' } }>
+      <Li style={ { textDecoration: completed === 'completed' ? 'line-through' : 'none' } }>
         <Input 
           type="checkbox"
-          checked={ completed }
+          checked={ completed === 'completed' }
           onChange={ () => this.lineThrough(id) }
           readOnly
         />
