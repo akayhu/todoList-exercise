@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { addTodo } from '../actions';
 import { CreateButton } from './styled';
 
 const inputStyle = {
@@ -19,11 +16,11 @@ class CreateTodo extends Component {
     this.addTodoList = this.addTodoList.bind(this);
   }
   addTodoList(e) {
+    const { addTodoFunc } = this.props;
     e.preventDefault();
-    const { addTodo } = this.props;
     let input = this.refs.todoListInput;
     let inputValue = input.value;
-    addTodo(inputValue);
+    addTodoFunc(inputValue);
     input.value = '';
   }
   render() {
@@ -40,10 +37,4 @@ class CreateTodo extends Component {
   }
 }
 
-CreateTodo.propTypes = {
-  addTodo: PropTypes.func
-};
-
-const action = { addTodo };
-
-export default connect(null, action)(CreateTodo);
+export default CreateTodo;

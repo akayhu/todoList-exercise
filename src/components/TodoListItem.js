@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { toggleTodo, deltetTodo, editTodo } from '../actions';
 import { Li, Input, Button, DelButton, EditInput } from './styled';
 
 class TodoListItem extends Component {
@@ -18,25 +16,24 @@ class TodoListItem extends Component {
     };
   }
   lineThrough(id) {
-    this.props.toggleTodo(id);
+    this.props.toggleTodoFunc(id);
   }
   deltetItem(id) {
-    this.props.deltetTodo(id);
+    this.props.deltetTodoFunc(id);
   }
   editItem(event) {
     this.setState({ value: event.target.value });
   }
   editItemEnd(id) {
     const { value } = this.state;
-    const { editTodo } = this.props;
-    editTodo(id, value);
+    this.props.editTodoFunc(id, value);
     this.setState({ edit: false });
   }
   editItemView() {
     this.setState({ edit: true });
   }
   renderEdit(edit, id, text) {
-    if(edit) {
+    if (edit) {
       return (
         <span>
           <EditInput
@@ -44,7 +41,7 @@ class TodoListItem extends Component {
             value={ text }
             onChange={ this.editItem }
           />
-          <Button onClick={ () => { this.editItemEnd(id) } }>完成編輯</Button>
+          <Button onClick={ () => this.editItemEnd(id) }>完成編輯</Button>
         </span>
       )
     } else {
@@ -59,11 +56,11 @@ class TodoListItem extends Component {
         <Input 
           type="checkbox"
           checked={ completed }
-          onChange={ () => { this.lineThrough(id) } }
+          onChange={ () => this.lineThrough(id) }
           readOnly
         />
         { this.renderEdit(edit, id, value) }
-        <DelButton onClick={ () => { this.deltetItem(id) } }>刪除</DelButton>
+        <DelButton onClick={ () => this.deltetItem(id) }>刪除</DelButton>
       </Li>
     );
   }
@@ -71,12 +68,7 @@ class TodoListItem extends Component {
 
 TodoListItem.propTypes = {
   id: PropTypes.number,
-  completed: PropTypes.bool,
-  toggleTodo: PropTypes.func,
-  deltetTodo: PropTypes.func,
-  editTodo: PropTypes.func
+  completed: PropTypes.bool
 };
 
-const action = { toggleTodo, deltetTodo, editTodo };
-
-export default connect(null, action)(TodoListItem);
+export default TodoListItem;
