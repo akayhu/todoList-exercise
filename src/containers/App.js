@@ -1,74 +1,84 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import CreateTodo from '../components/CreateTodo';
-import TodoList from '../components/TodoList';
-import NavButton from '../components/NavButton';
-import { connect } from 'react-redux';
-import { addTodo, viewFilter, toggleTodo, deltetTodo, editTodo } from '../actions';
+import React, { Component, Fragment } from 'react';
+import './index.css';
+import Header from '../containers/Header/index';
+import Home from '../containers/Index/index';
+import { BrowserRouter as Router, Route, Link, NavLink } from "react-router-dom";
+import TodoListMain from '../containers/TodoList';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.addTodoFunc = this.addTodoFunc.bind(this);
-    this.chanckFilter = this.chanckFilter.bind(this);
-    this.toggleTodoFunc = this.toggleTodoFunc.bind(this);
-    this.deltetTodoFunc = this.deltetTodoFunc.bind(this);
-    this.editTodoFunc = this.editTodoFunc.bind(this);
-  }
-  addTodoFunc(inputValue) {
-    this.props.addTodo(inputValue);
-  }
-  chanckFilter(type) {
-    this.props.viewFilter(type);
-  }
-  toggleTodoFunc(id) {
-    this.props.toggleTodo(id);
-  }
-  deltetTodoFunc(id) {
-    this.props.deltetTodo(id);
-  }
-  editTodoFunc(id, value) {
-    this.props.editTodo(id, value);
-  }
-  render() {
-    const { todoList, showFilter } = this.props;
-    return (
-      <div>
-        <CreateTodo
-          addTodoFunc={ this.addTodoFunc }
-        />
-        <NavButton
-          chanckFilterFunc={ this.chanckFilter }
-        />
-        <TodoList
-          listData={ todoList }
-          showFilter={ showFilter }
-          toggleTodoFunc={ this.toggleTodoFunc }
-          deltetTodoFunc={ this.deltetTodoFunc }
-          editTodoFunc={ this.editTodoFunc }
-        />
-      </div>
-    );
-  }
+	render() {
+		return (
+			<Fragment>
+				<Header />
+				<Router>
+					<div className="main">
+						<nav>
+							<IsNavLink activeOnlyWhenExact={ true } to="/" label="首頁" />
+							<IsNavLink to="/todoList" label="TodoList 練習" />
+							<IsNavLink to="/topics" label="Topics 範例" />
+							<IsNavLink to="/profile/9527" label="取 Profile ID 範例" />
+						</nav>
+						<hr />
+						<Route exact path="/" component={ Home } />
+						<Route path="/todoList" component={ TodoListMain } />
+						<Route path="/topics" component={ Topics } />
+						<Route path="/profile/:id" component={ ProfileId } />
+					</div>
+				</Router>
+			</Fragment>
+		);
+	}
 }
 
-App.propTypes = {
-  addTodo: PropTypes.func,
-  viewFilter: PropTypes.func,
-  todoList: PropTypes.array,
-  showFilter: PropTypes.string,
-  toggleTodo: PropTypes.func,
-  deltetTodo: PropTypes.func,
-  editTodo: PropTypes.func
-};
+const IsNavLink = ({ label, to, activeOnlyWhenExact }) => (
+	<Route
+		path={ to }
+		exact={ activeOnlyWhenExact }
+		children={ ({ match }) => {
+			const isSelect = match ? 'select' : '';
+			const isActive = match ? 'active' : '';
+			return (
+				<div className={ `${isActive} ` }>
+					<NavLink activeClassName={ isSelect } to={ to }>{ label }</NavLink>
+				</div>
+			);
+		 }}
+	/>
+);
 
-const mapStateToProps = (state) => {
-  return {
-    todoList: state.todoData,
-    showFilter: state.viewFilter
-  }
-};
+const Topics = ({ match }) => (
+	<div className="topics_main">
+		<span>Topics</span>
+		<ul>
+			<li>
+				<Link to={ `${match.url}/rendering` }>Rendering with React</Link>
+			</li>
+			<li>
+				<Link to={ `${match.url}/components` }>Components</Link>
+			</li>
+			<li>
+				<Link to={ `${match.url}/props-v-state` }>Props v. State</Link>
+			</li>
+		</ul>
+		<Route path={ `${match.url}/:topicId` } component={ Topic } />
+		<Route
+			exact
+			path={ match.url }
+			render={ () => <h3>Please select a topic.</h3> }
+		/>
+	</div>
+);
 
-const action = { addTodo, viewFilter, toggleTodo, deltetTodo, editTodo };
+const Topic = ({ match }) => (
+	<div>
+		<span>{ match.params.topicId }</span>
+	</div>
+);
 
-export default connect(mapStateToProps, action)(App);;
+const ProfileId = ({ match }) => (
+	<div className="topics_main">
+		Profile ID 是: { match.params.id }
+	</div>
+);
+
+export default App;
