@@ -24,7 +24,7 @@ const navData = [
 		activeOnlyWhenExact: false
 	},
 	{
-		label: 'Redux Form練習',
+		label: 'Redux Form 練習',
 		to: '/reduxForm',
 		activeOnlyWhenExact: false
 	}
