@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
 import todoData from './todoReducer';
-import viewFilter from './filterReducer'
+import viewFilter from './filterReducer';
+import { reducer as reduxFormReducer } from 'redux-form';
 
 const todoApp = combineReducers({
   todoData,
-  viewFilter
+	viewFilter,
+	form: reduxFormReducer
 });
 
 export default todoApp;

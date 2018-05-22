@@ -1,0 +1,11 @@
+.formMain {
+  padding: 10px 40px;
+}
+.formMain form label {
+  margin-top: 10px;
+  display: inline-block;
+}
+.formMain form {
+  float: left;
+  margin-right: 50px;
+}

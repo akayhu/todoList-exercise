@@ -3,6 +3,7 @@ import './index.css';
 import Header from '../containers/Header/index';
 import Nav from '../containers/Nav/index';
 import Home from '../containers/Index/index';
+import SimpleForm from '../containers/ReduxForm/index';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import TodoListMain from '../containers/TodoList';
 
@@ -19,6 +20,7 @@ class App extends Component {
 						<Route path="/todoList" component={ TodoListMain } />
 						<Route path="/topics" component={ Topics } />
 						<Route path="/profile/:id" component={ ProfileId } />
+						<Route path="/reduxForm" component={ SimpleForm } />
 					</div>
 				</Router>
 			</Fragment>

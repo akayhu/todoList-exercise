@@ -22,6 +22,11 @@ const navData = [
 		label: '取 Profile ID 範例',
 		to: '/profile/9527',
 		activeOnlyWhenExact: false
+	},
+	{
+		label: 'Redux Form練習',
+		to: '/reduxForm',
+		activeOnlyWhenExact: false
 	}
 ];
 
