@@ -5,49 +5,49 @@ import { Li, Input, Button, DelButton, EditInput } from './styled';
 class TodoListItem extends Component {
   constructor(props) {
     super(props);
-    this.lineThrough = this.lineThrough.bind(this);
-    this.deltetItem = this.deltetItem.bind(this);
-    this.editItem = this.editItem.bind(this);
-    this.editItemView = this.editItemView.bind(this);
-    this.editItemEnd = this.editItemEnd.bind(this);
     this.state = {
-      value: this.props.data.text,
+      value: props.data.text,
       edit: false
     };
   }
-  lineThrough(id) {
-    this.props.toggleTodoFunc(id);
+  lineThrough = id => {
+    const { toggleTodoFunc } = this.props;
+    toggleTodoFunc(id);
   }
-  deltetItem(id) {
-    this.props.deltetTodoFunc(id);
+  deltetItem = id => {
+    const { deltetTodoFunc } = this.props;
+    deltetTodoFunc(id);
   }
-  editItem(event) {
-    this.setState({ value: event.target.value });
+  editItem = event => {
+    this.setState({
+      value: event.target.value
+    });
   }
-  editItemEnd(id) {
+  editItemEnd = id => {
     const { value } = this.state;
-    this.props.editTodoFunc(id, value);
+    const { editTodoFunc } = this.props;
+    editTodoFunc(id, value);
     this.setState({ edit: false });
   }
-  editItemView() {
+  editItemView = () => {
     this.setState({ edit: true });
   }
-  renderEdit(edit, id, text) {
+  renderEdit = (edit, id, text) => {
     if (edit) {
       return (
         <span>
           <EditInput
             type="text"
             value={ text }
-            onChange={ this.editItem }
+            onChange={this.editItem}
           />
-          <Button onClick={ () => this.editItemEnd(id) }>完成編輯</Button>
+          <Button onClick={() => this.editItemEnd(id)}>完成編輯</Button>
         </span>
       )
-    } else {
-      return (<span onClick={ this.editItemView }>{ text }</span>)
-    }
+    } 
+    return (<span onClick={this.editItemView}>{ text }</span>)
   }
+
   render() {
     const { edit, value } = this.state;
     const { id, completed } = this.props.data;

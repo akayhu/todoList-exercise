@@ -5,31 +5,34 @@ import CreateTodo from '../../components/CreateTodo';
 import TodoList from '../../components/TodoList';
 import NavButton from '../../components/NavButton';
 import { connect } from 'react-redux';
-import { addTodo, viewFilter, toggleTodo, deltetTodo, editTodo } from '../../actions';
+import {
+	addTodo,
+	viewFilter,
+	toggleTodo,
+	deltetTodo,
+	editTodo
+} from '../../actions';
 
 class TodoListMain extends Component {
-	constructor(props) {
-		super(props);
-		this.addTodoFunc = this.addTodoFunc.bind(this);
-		this.chanckFilter = this.chanckFilter.bind(this);
-		this.toggleTodoFunc = this.toggleTodoFunc.bind(this);
-		this.deltetTodoFunc = this.deltetTodoFunc.bind(this);
-		this.editTodoFunc = this.editTodoFunc.bind(this);
+	addTodoFunc = inputValue => {
+		const { addTodo } = this.props;
+		addTodo(inputValue);
 	}
-	addTodoFunc(inputValue) {
-		this.props.addTodo(inputValue);
+	chanckFilter = type => {
+		const { viewFilter } = this.props;
+		viewFilter(type);
 	}
-	chanckFilter(type) {
-		this.props.viewFilter(type);
+	toggleTodoFunc = id => {
+		const { toggleTodo } = this.props;
+		toggleTodo(id);
 	}
-	toggleTodoFunc(id) {
-		this.props.toggleTodo(id);
+	deltetTodoFunc = id => {
+		const { deltetTodo } = this.props;
+		deltetTodo(id);
 	}
-	deltetTodoFunc(id) {
-		this.props.deltetTodo(id);
-	}
-	editTodoFunc(id, value) {
-		this.props.editTodo(id, value);
+	editTodoFunc = (id, value) => {
+		const { editTodo } = this.props;
+		editTodo(id, value);
 	}
 	render() {
 		const { todoList, showFilter } = this.props;
@@ -70,6 +73,12 @@ const mapStateToProps = (state) => {
 	}
 };
 
-const action = { addTodo, viewFilter, toggleTodo, deltetTodo, editTodo };
+const action = {
+	addTodo,
+	viewFilter,
+	toggleTodo,
+	deltetTodo,
+	editTodo
+};
 
 export default connect(mapStateToProps, action)(TodoListMain);

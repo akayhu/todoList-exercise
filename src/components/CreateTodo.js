@@ -11,11 +11,7 @@ const inputStyle = {
 };
 
 class CreateTodo extends Component {
-  constructor(props) {
-    super(props);
-    this.addTodoList = this.addTodoList.bind(this);
-  }
-  addTodoList(e) {
+  addTodoList = e => {
     const { addTodoFunc } = this.props;
     e.preventDefault();
     let input = this.refs.todoListInput;

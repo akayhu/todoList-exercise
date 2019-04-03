@@ -3,12 +3,21 @@ import TodoListItem from './TodoListItem';
 import { Ul } from './styled';
 
 class TodoList extends Component {
-  renderList() {
-    const { listData, showFilter, toggleTodoFunc, deltetTodoFunc, editTodoFunc } = this.props;
+  renderList = () => {
+    const {
+      listData,
+      showFilter,
+      toggleTodoFunc,
+      deltetTodoFunc,
+      editTodoFunc
+    } = this.props;
+
     if (listData.length === 0) return null;
+
     const renderListData = listData.filter((items, index) =>
       showFilter === 'all' ? true : items.completed === showFilter
     );
+
     return (
       renderListData.map((items) =>
         <TodoListItem
@@ -21,6 +30,7 @@ class TodoList extends Component {
       )
     );
   }
+
   render() {
     return (
       <Ul>
